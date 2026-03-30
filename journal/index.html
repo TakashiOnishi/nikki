@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,15 +10,32 @@
   <header>
     <div class="header-inner">
       <h1>日記アプリ</h1>
+      <div class="header-actions">
+        <button id="exportBtn" class="header-btn" title="エクスポート">
+          <span class="icon">↓</span> エクスポート
+        </button>
+        <button id="darkModeBtn" class="header-btn icon-btn" title="ダークモード切替" aria-label="ダークモード切替">
+          <span id="darkModeIcon">🌙</span>
+        </button>
+      </div>
     </div>
   </header>
 
   <main>
+    <!-- Editor -->
     <section class="editor-section">
       <div class="editor-card">
-        <div class="editor-date" id="currentDate"></div>
+        <div class="editor-row">
+          <label class="field-label" for="dateInput">日付</label>
+          <input type="date" id="dateInput" class="date-input">
+        </div>
         <input type="text" id="titleInput" class="title-input" placeholder="タイトル（任意）">
         <textarea id="bodyInput" class="body-input" placeholder="今日はどんな一日でしたか？"></textarea>
+        <div class="editor-row">
+          <label class="field-label" for="tagInput">タグ</label>
+          <input type="text" id="tagInput" class="tag-input" placeholder="カンマ区切りで入力（例: 仕事, 旅行）">
+        </div>
+        <div id="tagPreview" class="tag-preview"></div>
         <div class="editor-actions">
           <button id="clearBtn" class="btn btn-secondary">クリア</button>
           <button id="saveBtn" class="btn btn-primary">保存</button>
@@ -26,11 +43,30 @@
       </div>
     </section>
 
+    <!-- Filter & Entries -->
     <section class="entries-section">
       <h2 class="section-title">過去の日記</h2>
-      <div id="searchWrapper" class="search-wrapper">
-        <input type="text" id="searchInput" class="search-input" placeholder="キーワードで検索...">
+
+      <div class="filter-panel">
+        <!-- キーワード検索 -->
+        <input type="text" id="searchInput" class="filter-input" placeholder="キーワードで検索...">
+
+        <!-- 日付フィルタ -->
+        <div class="date-filter-row">
+          <label class="filter-label">期間</label>
+          <input type="date" id="filterDateFrom" class="filter-date">
+          <span class="date-sep">〜</span>
+          <input type="date" id="filterDateTo" class="filter-date">
+          <button id="clearDateFilterBtn" class="btn-clear-filter" title="日付フィルタをクリア">✕</button>
+        </div>
+
+        <!-- タグフィルタ -->
+        <div id="tagFilterRow" class="tag-filter-row hidden">
+          <label class="filter-label">タグ</label>
+          <div id="tagFilterChips" class="tag-chips"></div>
+        </div>
       </div>
+
       <div id="entriesList" class="entries-list">
         <p class="empty-message">まだ日記がありません。最初の一言を書いてみましょう！</p>
       </div>
@@ -47,6 +83,20 @@
       </div>
     </div>
   </div>
+
+  <!-- エクスポートモーダル -->
+  <div id="exportModal" class="modal hidden">
+    <div class="modal-content">
+      <p style="margin-bottom:8px;font-weight:bold;">エクスポート形式を選択</p>
+      <p style="font-size:13px;color:var(--color-muted);margin-bottom:20px;">現在のフィルタ条件で絞り込まれた日記を出力します</p>
+      <div class="modal-actions">
+        <button id="cancelExportBtn" class="btn btn-secondary">キャンセル</button>
+        <button id="exportJsonBtn" class="btn btn-secondary">JSON</button>
+        <button id="exportTextBtn" class="btn btn-primary">テキスト</button>
+      </div>
+    </div>
+  </div>
+
   <div id="modalOverlay" class="modal-overlay hidden"></div>
 
   <script src="app.js"></script>
