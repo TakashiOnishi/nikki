@@ -1,0 +1,20 @@
+{
+  "name": "日記アプリ",
+  "short_name": "日記",
+  "description": "シンプルな日記アプリ。タグ・日付フィルタ・ダークモード対応。",
+  "start_url": "/prog.github.io/journal/",
+  "scope": "/prog.github.io/journal/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f5f0eb",
+  "theme_color": "#4a3728",
+  "lang": "ja",
+  "icons": [
+    {
+      "src": "icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
