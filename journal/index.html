@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>日記アプリ</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <h1>日記アプリ</h1>
+    </div>
+  </header>
+
+  <main>
+    <section class="editor-section">
+      <div class="editor-card">
+        <div class="editor-date" id="currentDate"></div>
+        <input type="text" id="titleInput" class="title-input" placeholder="タイトル（任意）">
+        <textarea id="bodyInput" class="body-input" placeholder="今日はどんな一日でしたか？"></textarea>
+        <div class="editor-actions">
+          <button id="clearBtn" class="btn btn-secondary">クリア</button>
+          <button id="saveBtn" class="btn btn-primary">保存</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="entries-section">
+      <h2 class="section-title">過去の日記</h2>
+      <div id="searchWrapper" class="search-wrapper">
+        <input type="text" id="searchInput" class="search-input" placeholder="キーワードで検索...">
+      </div>
+      <div id="entriesList" class="entries-list">
+        <p class="empty-message">まだ日記がありません。最初の一言を書いてみましょう！</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- 削除確認モーダル -->
+  <div id="deleteModal" class="modal hidden">
+    <div class="modal-content">
+      <p>この日記を削除しますか？</p>
+      <div class="modal-actions">
+        <button id="cancelDeleteBtn" class="btn btn-secondary">キャンセル</button>
+        <button id="confirmDeleteBtn" class="btn btn-danger">削除</button>
+      </div>
+    </div>
+  </div>
+  <div id="modalOverlay" class="modal-overlay hidden"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
