@@ -112,6 +112,18 @@ header h1 {
   font-size: 16px;
 }
 
+.install-btn {
+  background: rgba(200,144,96,0.25);
+  border-color: rgba(200,144,96,0.5);
+  font-weight: bold;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.7; }
+}
+
 /* ===== Main ===== */
 main {
   max-width: 760px;
