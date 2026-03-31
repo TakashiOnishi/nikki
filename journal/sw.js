@@ -1,10 +1,10 @@
-const CACHE = 'journal-v1';
+const CACHE = 'journal-v2';
 const ASSETS = [
-  '/prog.github.io/journal/',
-  '/prog.github.io/journal/index.html',
-  '/prog.github.io/journal/style.css',
-  '/prog.github.io/journal/app.js',
-  '/prog.github.io/journal/manifest.json',
+  '/nikki/journal/',
+  '/nikki/journal/index.html',
+  '/nikki/journal/style.css',
+  '/nikki/journal/app.js',
+  '/nikki/journal/manifest.json',
 ];
 
 self.addEventListener('install', e => {
